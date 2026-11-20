@@ -21,7 +21,7 @@ jobs:
         run: |
           mkdir -p sitio
           API='https://script.google.com/macros/s/AKfycbwrp9yy8Yp8_Rjtf0jW8rPjMdMbo99AT6PSv0b3kS4y8_lp0e7tMeuZfW1QlYJ9AK8/exec'
-          for f in index.html sw.js manifest.webmanifest icon-192.png icon-512.png apple-touch-icon.png; do
+          for f in index.html sw.js manifest.webmanifest icon-192.png icon-512.png icon-maskable-512.png apple-touch-icon.png; do
             curl -sSL "$API?archivo=$f" | python3 -c "import sys,json,base64; d=json.load(sys.stdin); assert 'base64' in d, d; sys.stdout.buffer.write(base64.b64decode(d['base64']))" > "sitio/$f"
             echo "$f $(wc -c < sitio/$f) bytes"
           done
